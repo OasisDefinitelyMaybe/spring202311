@@ -10,22 +10,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Aspect
+@Order(1)
 public class ProxyCache {
+
     private Map<Long, Object> cacheData = new HashMap<>();
-    @Pointcut("execution(* aopex..*(long))")
-    public void publicTarget() {}
 
     @Around("CommonPointcut.publicTarget()")
-    @Order(1)
     public Object process(ProceedingJoinPoint joinPoint) throws Throwable {
 
-        Object[] args = joinPoint.getArgs(); // 매개변수로 투입된 인자값 (예 - 10L)
+        Object[] args = joinPoint.getArgs(); // 매개변수로 투입된 인자 값( 예 - 10L)
         Long num = (Long)args[0];
-        if(cacheData.containsKey(num)) {
+        if (cacheData.containsKey(num)) {
             System.out.println("캐시값 사용!");
             return cacheData.get(num);
         }
-        Object result = joinPoint.proceed();
+
+        Object result = joinPoint.proceed(); // ProxyCalculator::proceed()
 
         // 캐시 저장
         cacheData.put(num, result);

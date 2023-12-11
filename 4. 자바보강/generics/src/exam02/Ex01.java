@@ -5,8 +5,9 @@ public class Ex01 {
         Box<Apple> appleBox = new Box<>();
         appleBox.setItem(new Apple());
 
-        Apple apple = appleBox.getItem(); // 타입안정성, 형변환X
+        Apple apple = appleBox.getItem(); // 타입안정성, 형변환 X
 
         Box<Pear> pearBox = new Box<>();
+
     }
 }

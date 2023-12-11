@@ -9,6 +9,5 @@ public class Ex01 {
         //Calculator.num = 20;
         int result2 = cal.minus(20, 10);
         System.out.println(result2);
-
     }
 }

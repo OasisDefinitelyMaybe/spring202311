@@ -17,14 +17,15 @@ public class Ex01 {
             conn = DriverManager.getConnection(url, username, password);
             System.out.println(conn);
 
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         } finally { // 예외가 발생하든 하지 않든 무조건 실행 - 예) 자원해제
             if (conn != null) {
                 try {
                     conn.close();
-                } catch (SQLException e2) {
-                }
+                } catch (SQLException e2) {}
             }
         }
     }

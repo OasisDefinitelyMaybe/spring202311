@@ -7,7 +7,7 @@ public class Box {
         return item;
     }
 
-    public void setItem(Object item){
+    public void setItem(Object item) {
         this.item = item;
     }
 }

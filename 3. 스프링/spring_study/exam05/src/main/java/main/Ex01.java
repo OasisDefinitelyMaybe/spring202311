@@ -6,8 +6,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Ex01 {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext ctx = new
-                AnnotationConfigApplicationContext(AppCtx.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
 
         Calculator cal = ctx.getBean(Calculator.class); // Proxy 객체
         long result = cal.factorial(10L);
@@ -23,6 +22,5 @@ public class Ex01 {
         System.out.printf("cal : %d%n", result4);
 
         ctx.close();
-
     }
 }

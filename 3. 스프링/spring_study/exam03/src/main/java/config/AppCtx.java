@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppCtx {
+
     @Bean
     public MemberDao memberDao() {
         return new MemberDao();
@@ -16,13 +17,16 @@ public class AppCtx {
 
     @Bean
     public JoinValidator joinValidator() {
+
         return new JoinValidator(memberDao());
     }
 
     @Bean
     public JoinService joinService() {
+
         return new JoinService(memberDao(), joinValidator());
     }
+
     @Bean
     public ListService listService() {
         ListService listService = new ListService();

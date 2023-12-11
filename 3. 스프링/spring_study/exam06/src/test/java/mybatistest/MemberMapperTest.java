@@ -18,7 +18,7 @@ public class MemberMapperTest {
 
     @Autowired
     private MemberMapper mapper;
-
+    
     @Test
     @DisplayName("회원 목록 조회 테스트")
     void memberListTest() {
@@ -38,20 +38,20 @@ public class MemberMapperTest {
     @Test
     @DisplayName("회원 추가 테스트")
     void memberInsertTest() {
-        Member member = Member.builder()
-                .userId("USER203")
-                .userPw("123456")
-                .userNm("사용자203")
-                .email("user203@test.org")
-                .build();
+         Member member = Member.builder()
+                 .userId("USER203")
+                 .userPw("123456")
+                 .userNm("사용자203")
+                 .email("user203@test.org")
+                 .build();
 
-        int affectedRow = mapper.register(member);
-        System.out.println(affectedRow);
-        System.out.println(member);
+         int affectedRow = mapper.register(member);
+         System.out.println(affectedRow);
+         System.out.println(member);
     }
-
+    
     @Test
-    @DisplayName("회원정보 수정 업데이트")
+    @DisplayName("회원정보 수정 테스트")
     void memberUpdateTest() {
         Member member = Member.builder()
                 .userId("USER99")
@@ -60,8 +60,8 @@ public class MemberMapperTest {
                 //.email("(수정)user99@test.org")
                 .build();
 
-        int affectesRows = mapper.update(member);
-        System.out.println(affectesRows);
+        int affectedRows = mapper.update(member);
+        System.out.println(affectedRows);
     }
 
     @Test

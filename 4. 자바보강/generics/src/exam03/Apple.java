@@ -7,6 +7,7 @@ public class Apple extends Fruit {
         System.out.println("사과");
     }
 
-    public String toString() {return "사과";
+    public String toString() {
+        return "사과";
     }
 }

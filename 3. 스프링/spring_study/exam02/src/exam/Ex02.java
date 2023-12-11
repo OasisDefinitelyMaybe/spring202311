@@ -6,8 +6,9 @@ public class Ex02 {
 
         A a = new D();
 
-        if(a instanceof C) {
-            C c2 = (C)a;
+        if (a instanceof C) {
+            C c2 = (C) a;
         }
     }
+
 }

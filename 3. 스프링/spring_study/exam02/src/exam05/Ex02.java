@@ -8,6 +8,7 @@ public class Ex02 {
                 return num1 + num2;
             }
         };
+
         Calculator cal2 = (a,b) -> a + b;
     }
 }

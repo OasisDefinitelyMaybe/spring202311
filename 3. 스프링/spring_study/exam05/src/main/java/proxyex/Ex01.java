@@ -10,10 +10,11 @@ public class Ex01 {
         long result1 = cal1.factorial(10L);
         System.out.printf("cal1 : %d%n", result1);
 
-        long etime = System.nanoTime();  // 공통 기능
+        long etime = System.nanoTime();    // 공통 기능
         System.out.printf("걸린시간 : %d%n", etime - stime);
 
-        stime = System.nanoTime();  // 공통 기능
+
+        stime = System.nanoTime(); // 공통 기능
 
         // 핵심 기능
         RecCalculator cal2 = new RecCalculator();
@@ -22,5 +23,6 @@ public class Ex01 {
 
         etime = System.nanoTime(); // 공통 기능
         System.out.printf("걸린시간 : %d%n", etime - stime);
+
     }
 }

@@ -9,5 +9,6 @@ public class Ex02 {
         Calculator cal2 = new ProxyCalculator(new RecCalculator());
         long result2 = cal2.factorial(10L);
         System.out.printf("cal2 : %d%n", result2);
+
     }
 }

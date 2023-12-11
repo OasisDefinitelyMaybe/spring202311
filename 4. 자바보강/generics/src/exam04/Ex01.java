@@ -18,4 +18,3 @@ public class Ex01 {
         s1 = null;
     }
 }
-

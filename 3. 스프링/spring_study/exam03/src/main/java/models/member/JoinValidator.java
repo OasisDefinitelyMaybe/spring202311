@@ -1,30 +1,35 @@
 package models.member;
 
 import commons.exceptions.BadRequestException;
-import commons.validators.RequiredValidator;
-import commons.validators.Validator;
+import commons.valdators.RequiredValidator;
+import commons.valdators.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
 public class JoinValidator implements Validator<Member>, RequiredValidator {
+
     @Autowired
     private MemberDao memberDao;
 
     public JoinValidator() {}
+
     public JoinValidator(MemberDao memberDao) {
         this.memberDao = memberDao;
     }
+
     public void validate(Member member) {
 
         /* 필수 항목 검증(아이디, 비밀번호, 비밀번호 확인, 회원명) */
+
         String userId = member.getUserId();
         String userPw = member.getUserPw();
         String confirmPw = member.getConfirmPw();
         String userNm = member.getUserNm();
 
-        // 필수 항목 - null 또는 빈 공백 문자 "   "
+        // 필수 항목 - null 또는 빈 공백 문자    "    "
+        // RuntimeException e = new BadRequestException
         checkRequired(userId, new BadRequestException("아이디를 입력하세요."));
         checkRequired(userPw, new BadRequestException("비밀번호를 입력하세요."));
         checkRequired(confirmPw, new BadRequestException("비밀번호를 확인하세요."));
@@ -35,7 +40,5 @@ public class JoinValidator implements Validator<Member>, RequiredValidator {
 
         // 비밀번호, 비밀번호 확인시 일치 여부
         checkTrue(userPw.equals(confirmPw), new BadRequestException("비밀번호가 일치하지 않습니다."));
-
-        }
     }
-
+}

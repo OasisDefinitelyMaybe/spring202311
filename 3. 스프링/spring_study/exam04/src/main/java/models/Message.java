@@ -7,7 +7,6 @@ public class Message implements InitializingBean, DisposableBean {
 
     public void send(String message) {
         System.out.printf("전송 메세지 : %s%n", message);
-
     }
 
     @Override

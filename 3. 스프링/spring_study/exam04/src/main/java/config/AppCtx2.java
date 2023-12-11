@@ -13,9 +13,9 @@ public class AppCtx2 {
     public Message message() {
         return new Message();
     }
+
     @Bean(initMethod = "init", destroyMethod = "close")
     public Message2 message2() {
         return new Message2();
     }
-
 }

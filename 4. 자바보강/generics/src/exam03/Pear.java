@@ -7,6 +7,7 @@ public class Pear extends Fruit {
         System.out.println("배");
     }
 
-    public String toString() {return "배";
+    public String toString() {
+        return "배";
     }
 }

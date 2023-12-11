@@ -16,10 +16,12 @@ public class AppCtx2 {
     public JoinValidator joinValidator() {
         return new JoinValidator();
     }
+
     @Bean
     public JoinService joinService() {
         return new JoinService();
     }
+
     @Bean
     public ListService listService() {
         return new ListService();

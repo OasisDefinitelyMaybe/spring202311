@@ -10,8 +10,7 @@ import java.time.LocalDateTime;
 
 public class Ex01 {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext ctx = new
-                AnnotationConfigApplicationContext(AppCtx.class);
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(AppCtx.class);
 
         JoinService joinService = ctx.getBean(JoinService.class);
         ListService listService = ctx.getBean(ListService.class);

@@ -7,12 +7,12 @@ public class Ex02 {
         animals[1] = new Dog();
         animals[2] = new Bird();
 
-        for(Animal animal : animals) {
+        for (Animal animal : animals) {
             animal.move();
 
-            if(animal instanceof Human) {
-            Human human = (Human)animal;
-            human.readBook();
+            if (animal instanceof  Human) {
+                Human human = (Human) animal;
+                human.readBook();
             }
         }
     }

@@ -3,7 +3,7 @@ package exam02;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 
-@MyAnno2(nums = {10,20,30,40,}) // 값이 하나일땐 중괄호 생략가능( nums=10 )
+@MyAnno2(nums=10)
 public class Ex01 {
     public static void main(String[] args) {
         Class cls = Ex01.class;

@@ -2,7 +2,8 @@ package exam01;
 
 public class Ex03 {
     public static void main(String[] args) {
-        try (MyResource my = new MyResource()) {
+
+        try (MyResouce my = new MyResouce()) {
 
         } catch (Exception e) {
             e.printStackTrace();

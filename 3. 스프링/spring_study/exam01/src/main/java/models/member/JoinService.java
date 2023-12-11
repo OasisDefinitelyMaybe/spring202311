@@ -4,6 +4,7 @@ public class JoinService {
 
     private MemberDao memberDao;
     private JoinValidator validator;
+
     public JoinService(MemberDao memberDao, JoinValidator validator) {
         this.memberDao = memberDao;
         this.validator = validator;

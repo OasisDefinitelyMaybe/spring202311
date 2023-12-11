@@ -12,19 +12,18 @@ public class Ex02 {
         String username = "SPRING6";
         String password = "_aA123456";
 
-        try(Connection conn = DriverManager.getConnection(url, username, password);
-           Statement stmt = conn.createStatement()) {
-           String userId = "USER01";
-           String sql = "INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, EMAIL) "
-                        + "VALUES(SEQ_MEMBER.nextval, '"+ userId +"', '123456', '사용자01', 'user01@test.org')";
 
-           int result = stmt.executeUpdate(sql);
+        try (Connection conn = DriverManager.getConnection(url, username, password);
+            Statement stmt = conn.createStatement()) {
+            String userId = "USER01";
+            String sql = "INSERT INTO MEMBER (USER_NO, USER_ID, USER_PW, USER_NM, EMAIL) " +
+                    " VALUES (SEQ_MEMBER.nextval, '" + userId + "', '123456', '사용자01', 'user01@test.org')";
+
+            int result = stmt.executeUpdate(sql);
             System.out.println(result);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-     }
+    }
 }
-
-

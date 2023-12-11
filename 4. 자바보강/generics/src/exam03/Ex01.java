@@ -8,13 +8,14 @@ public class Ex01 {
         appleBox.add(new Apple()); // Apple, Fruit, Object
         appleBox.add(new Apple());
 
+        Juicier.make2(appleBox);
 
-        Juicer.make2(appleBox);
 
         FruitBox<Object> pearBox = new FruitBox<>();
         pearBox.add(new Pear());
         pearBox.add(new Pear());
 
-        Juicer.make(pearBox);
+        Juicier.make(pearBox);
+
     }
 }

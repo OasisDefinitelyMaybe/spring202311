@@ -23,8 +23,8 @@ public class DbConfig {
 
         // 커넥션 풀 설정
         ds.setInitialSize(2);
-        ds.setTestWhileIdle(true);  // 유휴 상태 커넥션 객체를 체크 여부
-        ds.setTimeBetweenEvictionRunsMillis(3000);  // 3초마다 커넥션 상태 체크
+        ds.setTestWhileIdle(true); // 유휴 상태 커넥션 객체를 체크 여부
+        ds.setTimeBetweenEvictionRunsMillis(3000); // 3초마다 커넥션 상태 체크
         ds.setMinEvictableIdleTimeMillis(30 * 1000); // 30초가 최대 유휴 시간 -> 경과시 소멸
 
         return ds;
@@ -32,8 +32,10 @@ public class DbConfig {
 
     @Bean
     public JdbcTemplate jdbcTemplate() {
+
         return new JdbcTemplate(dataSource());
     }
+
     @Bean
     public SqlSessionFactory sqlSessionFactory() throws Exception {
         SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
@@ -41,6 +43,7 @@ public class DbConfig {
 
         return sessionFactoryBean.getObject();
     }
+
     @Bean
     public PlatformTransactionManager transactionManager() {
         DataSourceTransactionManager tm = new DataSourceTransactionManager(dataSource());
