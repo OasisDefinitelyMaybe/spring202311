@@ -16,5 +16,8 @@ public class Ex07 {
 
         Collections.sort(names, Comparator.reverseOrder());  // 오름차순 -> 내림차순
         System.out.println(names);
+
+
+
     }
 }
