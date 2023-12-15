@@ -3,6 +3,7 @@ package controllers.member;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 @Component
@@ -27,26 +28,8 @@ public class JoinValidator implements Validator {
          * 4. 비밀번호 최소 자리수(8자리 이상) 체크
          */
         RequestJoin form = (RequestJoin)target;
-        String userId = form.getUserId();
-        String userPw = form.getUserPw();
-        String confirmPw = form.getConfirmPw();
-        String userNm = form.getUserNm();
-        boolean agree = form.isAgree();
-        /*
-        if(userId == null || userId.isBlank()) {
-
-        }
-        */
-        if(!StringUtils.hasText(userId)) {
-            errors.rejectValue("userId", "Required", "아이디를 입력하세요.");
-        }
-
-        if(!StringUtils.hasText(userPw)) {
-            errors.rejectValue("userPw", "Required", "비밀번호를 입력하세요.");
-        }
-
-        if(!StringUtils.hasText(confirmPw)) {
-            errors.rejectValue("confirmPw", "Required", "비밀번호를 확인하세요.");
-        }
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userId", "Required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"userPw", "Required");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors,"confirmPw", "Required");
     }
 }
