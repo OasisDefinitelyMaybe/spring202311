@@ -19,7 +19,7 @@ public class Ex04 {
             String word2 = oper.apply(word);
             converted.add(word2);
         }
-        System.out.println(converted);
+
         return converted;
     }
 }
