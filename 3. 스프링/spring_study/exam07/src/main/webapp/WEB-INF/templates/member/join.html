@@ -12,6 +12,8 @@
             <dt th:text="#{아이디}"></dt>
             <dd>
                 <input type="text" name="userId" th:field="*{userId}">
+
+
                 <div th:each="err : ${#fields.errors('userId')}" th:text="${err}"></div>
             </dd>
         </dl>
