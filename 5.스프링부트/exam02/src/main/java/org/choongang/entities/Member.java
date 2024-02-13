@@ -35,7 +35,7 @@ public class Member extends Base {
     private MemberType type;
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<BoardData> items = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY)
