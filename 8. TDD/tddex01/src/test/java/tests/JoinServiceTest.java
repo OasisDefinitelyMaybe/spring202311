@@ -17,10 +17,18 @@ public class JoinServiceTest {
         joinService = new JoinService();
     }
 
+    private Member getMember() {
+        return Member.builder()
+                .userId("user" + System.currentTimeMillis())
+                .userPw("12345678")
+                .confirmPw("12345678")
+                .userNm("사용자")
+                .build();
+    }
+
     @Test
     @DisplayName("회원 가입 성공시 예외 발생 없음")
     void joinSuccess() {
-        System.out.println("joinSuccess");
         JoinService joinService = new JoinService();
         Member member = Member.builder().build();
         assertDoesNotThrow(() -> {
@@ -31,15 +39,15 @@ public class JoinServiceTest {
     @Test
     @DisplayName("필수 입력항목(userId, userPw, confirmPw, userNm) 검증, 실패시에는 BadRequestException 발생")
     void requiredField() {
-        System.out.println("requiredField");
         JoinService joinService = new JoinService();
         assertThrows(BadRequestException.class, () -> {
-            Member member = Member.builder()
-                    .userPw("123456")
-                    .confirmPw("123456")
-                    .userNm("사용자01")
-                    .build();
+            /* userId 검증 - null, 빈값 */
+            Member member = getMember();
+            member.setUserId(null);
+            joinService.join(member);
 
+            member = getMember();
+            member.setUserId("     ");
             joinService.join(member);
         });
     }
