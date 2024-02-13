@@ -1,5 +1,6 @@
 package tests;
 
+import member.controllers.JoinValidator;
 import member.controllers.Member;
 import member.service.BadRequestException;
 import member.service.JoinService;
@@ -14,7 +15,7 @@ public class JoinServiceTest {
 
     @BeforeEach
     void init() {
-        joinService = new JoinService();
+        joinService = new JoinService(new JoinValidator());
     }
 
     private Member getMember() {
@@ -29,7 +30,7 @@ public class JoinServiceTest {
     @Test
     @DisplayName("회원 가입 성공시 예외 발생 없음")
     void joinSuccess() {
-        JoinService joinService = new JoinService();
+        JoinService joinService = new JoinService(new JoinValidator());
         Member member = Member.builder().build();
         assertDoesNotThrow(() -> {
             joinService.join(member);
@@ -39,16 +40,33 @@ public class JoinServiceTest {
     @Test
     @DisplayName("필수 입력항목(userId, userPw, confirmPw, userNm) 검증, 실패시에는 BadRequestException 발생")
     void requiredField() {
-        JoinService joinService = new JoinService();
-        assertThrows(BadRequestException.class, () -> {
-            /* userId 검증 - null, 빈값 */
-            Member member = getMember();
-            member.setUserId(null);
-            joinService.join(member);
 
-            member = getMember();
-            member.setUserId("     ");
-            joinService.join(member);
-        });
+    }
+
+    private void requiredFieldTestEach(String field) {
+        Member memberNull = getMember();
+        Member memberBlank = getMember();
+        if (field.equals("userId")) {
+            memberNull.setUserId(null);
+            memberBlank.setUserId("     ");
+        } else if (field.equals("userPw")) {
+            memberNull.setUserPw(null);
+            memberBlank.setUserPw("     ");
+        } else if (field.equals("confirmPw")) {
+            memberNull.setConfirmPw(null);
+            memberBlank.setConfirmPw("     ");
+        } else if (field.equals("userNm")) {
+            memberNull.setUserNm(null);
+            memberBlank.setUserNm("     ");
+        }
+
+        assertAll(
+                () -> {
+                    assertThrows(BadRequestException.class, () -> joinService.join(memberNull));
+                },
+                () -> {
+                    assertThrows(BadRequestException.class, () -> joinService.join(memberBlank));
+                }
+        );
     }
 }
